@@ -1,0 +1,17 @@
+$Boston-University-Red: #cb0d06;
+$Terra-Cotta: #e86661;
+
+@media (min-width: 992px) {
+  .col-lg-6 {
+    flex: 0 0 auto;
+    width: 49%;
+  }
+}
+.remove {
+  color: $Boston-University-Red;
+  border: none;
+  background-color: transparent;
+  &:disabled {
+    color: $Terra-Cotta;
+  }
+}

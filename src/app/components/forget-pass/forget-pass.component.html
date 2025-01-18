@@ -1,0 +1,141 @@
+@if (step1) {
+<section class="d-flex justify-content-center mt-5">
+  <form
+    class="forget-form p-4 mt-5"
+    [formGroup]="forgetPasswordForm"
+    (ngSubmit)="submitForgetForm()"
+  >
+    <div class="mb-2">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+      @if (forgetPasswordForm.get('email')?.errors &&
+      forgetPasswordForm.get('email')?.touched) {
+      <div class="errors">
+        @if (forgetPasswordForm.get('email')?.getError('required')) {
+        <p>email is required</p>
+        } @if (forgetPasswordForm.get('email')?.getError('email')) {
+        <p>email invalid Format</p>
+        }
+      </div>
+      }
+    </div>
+
+    @if (message != '') {
+    <p class="text-end jasper-color m-0">{{ message }}</p>
+    }
+
+    <div class="d-flex justify-content-between align-items-center">
+      <button
+        [disabled]="!forgetPasswordForm.valid"
+        type="submit"
+        class="main-btn"
+      >
+        @if (regSpinner) {
+        <i class="fas fa-spinner fa-spin me-1"></i>
+        } Submit
+      </button>
+    </div>
+  </form>
+</section>
+
+} @if (step2) {
+<section class="d-flex justify-content-center mt-5">
+  <form
+    class="forget-form p-4"
+    [formGroup]="resetCodeForm"
+    (ngSubmit)="submitCodeForm()"
+  >
+    <div class="mb-1">
+      <label for="resetCode" class="form-label"> Reset Code</label>
+      <input
+        type="text"
+        class="form-control"
+        id="resetCode"
+        formControlName="resetCode"
+      />
+      @if (resetCodeForm.get('resetCode')?.errors &&
+      resetCodeForm.get('resetCode')?.touched) {
+      <div class="errors">
+        @if (resetCodeForm.get('resetCode')?.getError('required')) {
+        <p>code is required</p>
+        }
+      </div>
+      }
+    </div>
+
+    @if (message != '') {
+    <p class="text-end jasper-color m-0">{{ message }}</p>
+    }
+
+    <div class="d-flex justify-content-between align-items-center">
+      <button [disabled]="!resetCodeForm.valid" type="submit" class="main-btn">
+        @if (regSpinner) {
+        <i class="fas fa-spinner fa-spin me-1"></i>
+        } Submit
+      </button>
+    </div>
+  </form>
+</section>
+
+} @if (step3) {
+<section class="d-flex justify-content-center mt-5">
+  <form
+    class="forget-form p-4"
+    [formGroup]="endResetPass"
+    (ngSubmit)="submitEndForm()"
+  >
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+      @if (endResetPass.get('email')?.errors &&
+      endResetPass.get('email')?.touched) {
+      <div class="errors">
+        @if (endResetPass.get('email')?.getError('required')) {
+        <p>email is required</p>
+        } @if (endResetPass.get('email')?.getError('email')) {
+        <p>email InValid Format</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="newPassword" class="form-label">New password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="newPassword"
+        formControlName="newPassword"
+      />
+      @if (endResetPass.get('newPassword')?.errors &&
+      endResetPass.get('newPassword')?.touched) {
+      <div class="errors">
+        @if (endResetPass.get('newPassword')?.getError('required')) {
+        <p>password is required</p>
+        } @if (endResetPass.get('newPassword')?.getError('pattern')) {
+        <p>must be at least 6 chars</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <button [disabled]="!endResetPass.valid" type="submit" class="main-btn">
+        @if (regSpinner) {
+        <i class="fas fa-spinner fa-spin me-1"></i>
+        } Submit
+      </button>
+    </div>
+  </form>
+</section>
+}

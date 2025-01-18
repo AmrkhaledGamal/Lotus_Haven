@@ -1,0 +1,57 @@
+@if (productDetails) {
+<section class="my-5 bg-white products">
+  <div class="row flex-column flex-md-row">
+    <div class="col-12 col-md-3 p-2">
+      <owl-carousel-o [options]="SpecificProduct">
+        @for (path of productDetails.images; track $index) {
+        <ng-container>
+          <ng-template carouselSlide>
+            <img class="w-100 mw-100" [src]="path" alt="Not found" />
+          </ng-template>
+        </ng-container>
+        }
+      </owl-carousel-o>
+    </div>
+    <div
+      class="info col-12 col-md-9 p-4 d-flex flex-column justify-content-between"
+    >
+      <div>
+        <h2>{{ productDetails.brand.name }}</h2>
+        <h3>{{ productDetails.title }}</h3>
+        <p class="text-muted">{{ productDetails.description }}</p>
+      </div>
+      <div>
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="text-muted">
+            Price: {{ productDetails.price | currency : "EGP " }}
+          </p>
+          @if (!wishlistIdData.includes(productDetails._id)) {
+          <button
+            #btnWish
+            class="btn-favorite-details"
+            (click)="pushWishlist(productDetails._id, btnWish)"
+          >
+            <i class="fa-solid fa-heart-circle-plus"></i>
+          </button>
+          } @if (wishlistIdData.includes(productDetails._id)) {
+          <button
+            #btnWish
+            class="btn-favorite-details"
+            (click)="removeFormWishlist(productDetails._id, btnWish)"
+          >
+            <i class="fa-solid fa-heart-circle-minus"></i>
+          </button>
+          }
+        </div>
+        <button
+          class="main-btn w-100"
+          #btnAdd
+          (click)="addToCart(productDetails._id, btnAdd)"
+        >
+          Add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+}

@@ -1,0 +1,58 @@
+<section class="my-5">
+  <div class="row gap-3">
+    @for (item of wishlistData; track $index) {
+    <div class="products col-lg-6 d-flex flex-row bg-white">
+      <div class="col-4">
+        <owl-carousel-o [options]="wishlistSlide">
+          @for (src of item.images; track $index) {
+          <ng-container>
+            <ng-template carouselSlide>
+              <img
+                [src]="
+                  'https://ecommerce.routemisr.com/Route-Academy-products/' +
+                  src
+                "
+                [alt]="item.slug"
+                [title]="item.title"
+                class="w-100"
+              />
+            </ng-template>
+          </ng-container>
+          }
+        </owl-carousel-o>
+      </div>
+
+      <div class="col-8 p-3 d-flex flex-column justify-content-between">
+        <div class="details">
+          <h4 class="jasper-color">{{ item.brand.name }}</h4>
+          <h6 class="p-colo">{{ item.title }}</h6>
+          <p class="text-muted">{{ item.description }}</p>
+        </div>
+        <div>
+          <div
+            class="d-flex flex-row justify-content-between align-items-center"
+          >
+            <p class="text-muted">
+              Price: {{ item.price | currency : "EGP " }}
+            </p>
+            <button
+              #btnRemove
+              class="remove d-block"
+              (click)="removeFormWishlist(item._id, btnRemove)"
+            >
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+          <button
+            class="main-btn w-100"
+            #btnAdd
+            (click)="addToCart(item._id, btnAdd)"
+          >
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</section>

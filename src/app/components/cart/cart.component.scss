@@ -1,0 +1,33 @@
+$shadow: 3px 2px 5px rgb(0 0 0 / 20%);
+$Boston-University-Red: #cb0d06;
+$Terra-Cotta: #e86661;
+
+.sec-cart {
+  box-shadow: $shadow;
+}
+
+.clear-all {
+  position: absolute;
+  right: 40px;
+  top: 50px;
+}
+
+.remove {
+  width: 100px;
+  color: $Boston-University-Red;
+  border: none;
+  background-color: transparent;
+  &:disabled {
+    color: $Terra-Cotta;
+  }
+}
+
+.icon-count {
+  color: $Boston-University-Red;
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  &:disabled {
+    color: $Terra-Cotta;
+  }
+}

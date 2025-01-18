@@ -1,0 +1,10 @@
+$shadow-main: 1px 1px 3px #d1423d;
+
+.navbar {
+  padding-inline: 50px;
+  box-shadow: $shadow-main;
+
+  @media (max-width: 768px) {
+    padding-inline: 35px;
+  }
+}

@@ -1,0 +1,70 @@
+<section class="d-flex justify-content-center align-items-center my-5">
+  <form
+    class="checkout-form p-4"
+    [formGroup]="checkOutForm"
+    (ngSubmit)="submitForm()"
+  >
+    <div class="mb-3">
+      <label for="details" class="form-label">details</label>
+      <input
+        type="text"
+        class="form-control"
+        id="details"
+        formControlName="details"
+      />
+      @if (checkOutForm.get('details')?.errors &&
+      checkOutForm.get('details')?.touched) {
+      <div class="errors">
+        @if (checkOutForm.get('details')?.getError('required')) {
+        <p>details is required</p>
+        }
+      </div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">phone</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="phone"
+        formControlName="phone"
+      />
+      @if (checkOutForm.get('phone')?.errors &&
+      checkOutForm.get('phone')?.touched) {
+      <div class="errors">
+        @if (checkOutForm.get('phone')?.getError('required')) {
+        <p>phone is required</p>
+        } @if (checkOutForm.get('phone')?.getError('pattern')) {
+        <p>accept only egypt phone numbers</p>
+        }
+      </div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="city" class="form-label">city</label>
+      <input
+        type="text"
+        class="form-control"
+        id="city"
+        formControlName="city"
+      />
+      @if (checkOutForm.get('city')?.errors &&
+      checkOutForm.get('city')?.touched) {
+      <div class="errors">
+        @if (checkOutForm.get('city')?.getError('required')) {
+        <p>city is required</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center gap-1">
+      <button [disabled]="checkOutForm.invalid" type="submit" class="main-btn">
+        @if (regSpinner) {
+        <i class="fas fa-spinner fa-spin me-1"></i>
+        } Submit
+      </button>
+      <div class="message-err">{{ masErr }}</div>
+    </div>
+  </form>
+</section>

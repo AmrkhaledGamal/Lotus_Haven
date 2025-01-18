@@ -1,0 +1,18 @@
+$p-text: rgba(0, 0, 0, 70%);
+
+.sec-sign-in {
+  margin-block: 80px;
+}
+
+.sign-in-form {
+  @media (max-width: 768px) {
+    width: 75% !important;
+  }
+}
+
+.forget-pass {
+  width: fit-content;
+  margin-inline-start: auto;
+  color: $p-text;
+  text-decoration: underline;
+}

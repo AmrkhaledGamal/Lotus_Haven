@@ -1,0 +1,10 @@
+<section class="my-5">
+  <div class="row g-3">
+    @for (item of brand; track $index) {
+    <div class="products col-sm-6 col-md-4 col-lg-3 p-2" role="button">
+      <img [src]="item.image" [alt]="item.name" class="w-100" height="250px" />
+      <h3 class="p-3 jasper-color">{{ item.name }}</h3>
+    </div>
+    }
+  </div>
+</section>

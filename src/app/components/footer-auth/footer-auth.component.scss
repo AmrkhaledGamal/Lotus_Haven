@@ -1,0 +1,27 @@
+$Jasper: #d1423d;
+$border-main: 1px solid #e86661;
+$p-text: rgba(0, 0, 0, 70%);
+
+:host {
+  margin-top: auto;
+}
+
+footer {
+  border-top: $border-main;
+  color: $p-text;
+}
+
+.sec-social {
+  border-bottom: $border-main;
+  .social {
+    a {
+      display: block;
+      color: $p-text;
+      transition: 0.2s;
+      &:hover {
+        color: $Jasper;
+        transform: scale(1.2);
+      }
+    }
+  }
+}

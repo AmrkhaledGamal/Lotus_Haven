@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg">
+  <a routerLink="">
+    <img src="lotus-haven.svg" alt="lotus haven logo" />
+  </a>
+  <button
+    class="navbar-toggler d-lg-none"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#collapsibleNavId"
+    aria-controls="collapsibleNavId"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active_link" routerLink="/home"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLinkActive="active_link"
+          routerLink="/products"
+          >Products</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLinkActive="active_link"
+          routerLink="/categories"
+          >Categories</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active_link" routerLink="/brands"
+          >Brands</a
+        >
+      </li>
+    </ul>
+    <div class="d-flex flex-row align-items-center gap-3">
+      <a class="cart-icon position-relative" routerLink="/cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-num position-absolute">{{ navNumberCart }} </span>
+      </a>
+
+      <a role="button" class="position-relative" routerLink="/wishlist">
+        <i class="fa-solid fa-heart fav-icon"></i>
+        <span class="fav-num position-absolute"> {{ navNumberWish }} </span>
+      </a>
+
+      <div>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle jasper-color"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fa-solid fa-gear"></i>
+          </a>
+          <ul class="dropdown-menu p-colo">
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="/forgetPassword"
+                routerLinkActive="active_link"
+                >forgat password</a
+              >
+            </li>
+          </ul>
+        </li>
+      </div>
+      <button (click)="signOut()" class="main-btn">sign out</button>
+    </div>
+  </div>
+</nav>

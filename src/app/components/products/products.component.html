@@ -1,0 +1,86 @@
+<section class="my-5">
+  <div class="search p-2 p-md-0 mb-3">
+    <input
+      type="search"
+      placeholder="search"
+      class="form-control input-search"
+      [(ngModel)]="searchProduct"
+    />
+  </div>
+  <div class="row g-4">
+    @for (product of products | search: searchProduct | paginate: { id:
+    'pageProduct', itemsPerPage: pageSize, currentPage: p, totalItems: total };
+    track $index) {
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+      <div class="products bg-white position-relative">
+        <div [routerLink]="['/details', product._id]" role="button">
+          <img
+            [src]="product.imageCover"
+            [title]="product.title"
+            [alt]="product.title"
+            class="w-100 mw-100"
+          />
+          <div class="info py-3 px-2">
+            <h3 class="jasper-color h5 mb-2">{{ product.brand.name }}</h3>
+            <h4 class="h6 p-colo mb-2">
+              {{ product.title.split(" ").slice(0, 2).join(" ") }}
+            </h4>
+            <div
+              class="price d-flex flex-row justify-content-between align-items-center mb-2"
+            >
+              <span class="text-muted"
+                >{{ product.price | currency : "EGP " }}
+              </span>
+              <span class="text-muted">
+                <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+                {{ product.ratingsAverage }}
+              </span>
+            </div>
+          </div>
+        </div>
+        @if (!wishlistIdData.includes(product._id)) {}
+        <button
+          #btnWish
+          class="btn-favorite"
+          (click)="pushWishlist(product._id, btnWish)"
+        >
+          <i class="fa-solid fa-heart-circle-plus"></i>
+        </button>
+        @if (wishlistIdData.includes(product._id)) {
+        <button
+          #btnWish
+          class="btn-favorite"
+          (click)="removeFormWishlist(product._id, btnWish)"
+        >
+          <i class="fa-solid fa-heart-circle-minus"></i>
+        </button>
+        }
+        <button
+          #btnAdd
+          class="cart-plus"
+          (click)="addToCart(product._id, btnAdd)"
+        >
+          <i class="fa-solid fa-cart-plus"></i>
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+</section>
+<div class="d-flex align-items-center justify-content-center">
+  <pagination-controls
+    id="pageProduct"
+    (pageChange)="pageChanged($event)"
+    (pageBoundsCorrection)="pageChanged($event)"
+    [maxSize]="9"
+    [directionLinks]="true"
+    [autoHide]="true"
+    [responsive]="true"
+    previousLabel="Previous"
+    nextLabel="Next"
+    screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"
+    screenReaderCurrentLabel="You're on page"
+  >
+  </pagination-controls>
+</div>

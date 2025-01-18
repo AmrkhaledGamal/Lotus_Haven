@@ -1,0 +1,10 @@
+<app-nav-main></app-nav-main>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+@if (scrollUp) {
+<button class="up" (click)="scrollTop()">
+  <i class="fa-solid fa-angle-up fa-bounce"></i>
+</button>
+}
+<app-footer></app-footer>

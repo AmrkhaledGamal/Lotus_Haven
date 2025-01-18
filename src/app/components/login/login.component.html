@@ -1,0 +1,58 @@
+<section class="sec-sign-in d-flex align-items-center justify-content-center">
+  <form
+    class="sign-in-form p-4 w-50"
+    [formGroup]="loginForm"
+    (ngSubmit)="submitLogin()"
+  >
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+      @if (loginForm.get('email')?.errors && loginForm.get('email')?.touched) {
+      <div class="errors">
+        @if (loginForm.get('email')?.getError('required')) {
+        <p>email is required</p>
+        } @if (loginForm.get('email')?.getError('email')) {
+        <p>email InValid Format</p>
+        }
+      </div>
+      }
+    </div>
+    <div class="mb-1">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+      />
+      @if (loginForm.get('password')?.errors &&
+      loginForm.get('password')?.touched) {
+      <div class="errors">
+        @if (loginForm.get('password')?.getError('required')) {
+        <p>password is required</p>
+        } @if (loginForm.get('password')?.getError('pattern')) {
+        <p>must be at least 6 chars</p>
+        }
+      </div>
+      }
+    </div>
+    <a routerLink="/forgetPasswordAuth" role="button" class="forget-pass"
+      >Forget Password</a
+    >
+    <div class="d-flex justify-content-between align-items-center gap-1">
+      <button [disabled]="!loginForm.valid" type="submit" class="main-btn">
+        @if (regSpinner) {
+        <i class="fas fa-spinner fa-spin me-1"></i>
+        } Submit
+      </button>
+      @if (masErr != '') {
+      <div class="message-err">{{ masErr }}</div>
+      }
+    </div>
+  </form>
+</section>

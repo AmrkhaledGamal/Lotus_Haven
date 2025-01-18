@@ -1,0 +1,42 @@
+$Jasper: #d1423d;
+$p-text: rgba(0, 0, 0, 70%);
+$Terra-Cotta: #e86661;
+$Boston-University-Red: #cb0d06;
+
+.info {
+  h2 {
+    color: $Jasper;
+    margin-bottom: 10px;
+  }
+  h3 {
+    color: $p-text;
+    margin-bottom: 20px;
+  }
+}
+
+.products {
+  &:hover {
+    .btn-favorite-details {
+      @media (min-width: 992px) {
+        right: 0px;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.btn-favorite-details {
+  position: relative;
+  color: $Boston-University-Red;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  transition: 0.7s;
+  &:disabled {
+    color: $Terra-Cotta;
+  }
+  @media (min-width: 992px) {
+    right: -50px;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,58 @@
+$Jasper: #d1423d;
+$CG-Red: #d93630;
+$Terra-Cotta: #e86661;
+$Boston-University-Red: #cb0d06;
+$Ghost-White: #f8f9fa;
+$p-text: rgba(0, 0, 0, 70%);
+$shadow: 3px 2px 5px rgb(0 0 0 / 20%);
+$shadow-main: 1px 1px 3px #d1423d;
+$border-main: 1px solid #e86661;
+$main-transition: 0.6s;
+
+.navbar {
+  padding-inline: 50px;
+  box-shadow: $shadow-main;
+}
+
+.nav-link {
+  transition: $main-transition;
+  &:hover,
+  &:focus {
+    color: $CG-Red;
+  }
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0px 1px 3px $Terra-Cotta;
+}
+
+.fav-icon {
+  font-size: 28px;
+  color: $Jasper;
+}
+
+.fav-num {
+  left: 9px;
+  color: white;
+  top: 2px;
+}
+
+.cart-icon {
+  color: $Jasper;
+  font-size: 26px;
+}
+
+.cart-num {
+  left: 9px;
+  top: -5px;
+  color: white;
+  border-radius: 50%;
+  background-color: $Jasper;
+  width: 17px;
+  height: 17px;
+  font-size: 12px;
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

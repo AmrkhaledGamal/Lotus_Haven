@@ -1,0 +1,24 @@
+@media (min-width: 1200px) {
+  .col-xl-2 {
+    width: 20%;
+  }
+}
+
+.loop-slider {
+  img {
+    height: 400px;
+    width: 100%;
+  }
+}
+
+.static-slide {
+  img {
+    height: 200px;
+    width: 100%;
+  }
+}
+
+.image-slide {
+  max-width: 100%;
+  height: 250px;
+}

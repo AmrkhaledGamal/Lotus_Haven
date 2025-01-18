@@ -1,1 +1,167 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+$Jasper: #d1423d;
+$CG-Red: #d93630;
+$Terra-Cotta: #e86661;
+$Boston-University-Red: #cb0d06;
+$Ghost-White: #f8f9fa;
+$p-text: rgba(0, 0, 0, 70%);
+$shadow: 3px 2px 5px rgb(0 0 0 / 20%);
+$shadow-main: 1px 1px 3px #d1423d;
+$border-main: 1px solid #e86661;
+$main-transition: 0.6s;
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  display: block;
+  color: $p-text;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d8d8d8;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $Jasper;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: $Ghost-White;
+}
+
+.jasper-color {
+  color: $Jasper;
+}
+
+.bg-jasper {
+  background-color: $Jasper;
+}
+
+.p-color {
+  color: $p-text;
+}
+
+.active_link {
+  color: $Jasper;
+}
+
+.main-btn {
+  background-color: $Jasper;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  transition: $main-transition;
+  &:hover {
+    background-color: $CG-Red;
+    color: $p-text;
+  }
+  &:disabled {
+    background-color: $Terra-Cotta;
+    color: rgb(195, 195, 195);
+  }
+}
+
+.input-search {
+  caret-color: $Jasper;
+  &::placeholder {
+    transition: $main-transition;
+  }
+  &:focus {
+    &::placeholder {
+      opacity: 0;
+    }
+    border-color: $Terra-Cotta;
+    box-shadow: 0px 0px 9px -4px #d1423d;
+  }
+}
+
+.products {
+  box-shadow: $shadow;
+  border-radius: 8px;
+  transition: $main-transition;
+  overflow: hidden;
+  &:hover {
+    transform: translateY(-7px);
+    .btn-favorite {
+      @media (min-width: 992px) {
+        right: 10px;
+        opacity: 1;
+      }
+    }
+  }
+  .cart-plus {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    color: $Boston-University-Red;
+    border: none;
+    font-size: 23px;
+    &:disabled {
+      color: $Terra-Cotta;
+    }
+  }
+  .btn-favorite {
+    position: absolute;
+    right: 10px;
+    bottom: 80px;
+    color: $Boston-University-Red;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    transition: 0.7s;
+    &:disabled {
+      color: $Terra-Cotta;
+    }
+    @media (min-width: 992px) {
+      right: -30px;
+      opacity: 0;
+    }
+  }
+}
+
+.up {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border: none;
+  background-color: $Jasper;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.toast-success {
+  background-color: $CG-Red;
+}
+
+.errors {
+  text-align: right;
+  color: $Boston-University-Red;
+}
+
+.message-err {
+  color: $Jasper;
+}
+
+.copy-right {
+  border-top: $border-main;
+  display: flex;
+  justify-content: center;
+}
+
+.search {
+  max-width: 500px;
+}
