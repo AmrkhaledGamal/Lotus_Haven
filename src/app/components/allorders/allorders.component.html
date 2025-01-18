@@ -1,1 +1,38 @@
-<p>allorders works!</p>
+<section class="my-5">
+  @for (item of dataUserOrders.cartItems; track $index) {
+  <div class="row products mb-3 d-flex flex-column flex-md-row">
+    <div class="col-md-4 p-3">
+      <img
+        [src]="item.product.imageCover"
+        [alt]="item.product.title"
+        class="w-100"
+      />
+    </div>
+    <div class="col-md-8 p-4">
+      <div class="details d-flex flex-column justify-content-between">
+        <div class="text">
+          <h3 class="jasper-color">{{ item.product.brand.name }}</h3>
+          <h4 class="p-color">{{ item.product.title }}</h4>
+        </div>
+        <div class="rating jasper-color">
+          <div>
+            count : <span class="p-color">{{ item.count }}</span>
+          </div>
+          <div>
+            price :
+            <span class="p-color">{{ item.price | currency : "EGP " }}</span>
+          </div>
+          <div>
+            rating :
+            <span class="p-color">{{ item.product.ratingsAverage }}</span>
+            <i class="fa-solid fa-star ms-2" style="color: #ffd43b"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</section>
+@if (thankYou) {
+<h1 class="text-center mt-5 jasper-color">thank you for buy</h1>
+}

@@ -6,7 +6,9 @@
   <button #btnClear (click)="clearCart(btnClear)" class="clear-all main-btn">
     Clear cart
   </button>
-  @for (item of productCartData.products; track $index) {
+  @if (!productCartData?.products?.length) {
+  <h1 class="text-center mt-5 jasper-color">cart is empty...</h1>
+  } @for (item of productCartData.products; track $index) {
   <div class="row flex-column flex-md-row border-bottom m-3">
     <div class="col-md-3">
       <img
@@ -53,6 +55,7 @@
   <button
     [routerLink]="['/checkout', productCartData._id]"
     class="main-btn mb-2 mt-4 mx-3"
+    [disabled]="!productCartData?.products?.length"
   >
     proceed to buy <i class="fa-brands fa-cc-visa ms-2"></i>
   </button>

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { AuthService } from '../../core/service/auth.service';
-import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../core/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +30,6 @@ export class LoginComponent {
       this._AuthService.apiLogin(this.loginForm.value).subscribe({
         next: (res) => {
           localStorage.setItem('token', res.token);
-          this._AuthService.decodeToken();
           this.regSpinner = false;
           this._Router.navigate(['/home']);
         },

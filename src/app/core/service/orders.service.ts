@@ -21,4 +21,10 @@ export class OrdersService {
       }
     );
   }
+
+  getUserOrders(id: string): Observable<any> {
+    return this.http.get(
+      `https://ecommerce.routemisr.com/api/v1/orders/user/${id}`
+    );
+  }
 }
