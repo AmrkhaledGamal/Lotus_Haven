@@ -18,7 +18,6 @@ export class CheckoutComponent implements OnInit {
   idCart: string = '';
   masErr: string = '';
   regSpinner: boolean = false;
-  urlOrigin: any;
 
   private formBuilder = inject(FormBuilder);
   checkOutForm = this.formBuilder.group({
@@ -31,8 +30,6 @@ export class CheckoutComponent implements OnInit {
   });
 
   ngOnInit() {
-    const currentUrl = window.location.origin;
-    this.urlOrigin = currentUrl;
     this._ActivatedRoute.params.subscribe((params) => {
       this.idCart = params['id'];
     });
@@ -42,18 +39,16 @@ export class CheckoutComponent implements OnInit {
     const userForm = this.checkOutForm.value;
     this.regSpinner = true;
     if (this.checkOutForm.valid) {
-      this._OrdersService
-        .onlineOrders(this.idCart, userForm, this.urlOrigin)
-        .subscribe({
-          next: (res) => {
-            this.regSpinner = false;
-            window.open(res.session.url, '_self');
-          },
-          error: (err) => {
-            this.regSpinner = false;
-            this.masErr = err.error.message;
-          },
-        });
+      this._OrdersService.onlineOrders(this.idCart, userForm).subscribe({
+        next: (res) => {
+          this.regSpinner = false;
+          window.open(res.session.url, '_self');
+        },
+        error: (err) => {
+          this.regSpinner = false;
+          this.masErr = err.error.message;
+        },
+      });
     }
   }
 }

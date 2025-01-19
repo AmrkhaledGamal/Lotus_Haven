@@ -10,9 +10,9 @@ export class OrdersService {
 
   headToken: any = { token: localStorage.getItem('token') };
 
-  onlineOrders(id: string, userForm: object, url: any): Observable<any> {
+  onlineOrders(id: string, userForm: object): Observable<any> {
     return this.http.post(
-      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=${url}`,
+      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://amrkhaledgamal.github.io/E-commerce-lotus-haven/`,
       {
         shippingAddress: userForm,
       },
