@@ -64,7 +64,13 @@ export class ProductsComponent implements OnInit {
     });
   }
   addToCart(id: string, e: HTMLButtonElement) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.toastr.warning('Please login to add to cart');
+      return;
+    }
     this._Renderer2.setAttribute(e, 'disabled', 'true');
+
     this._CartService.addItemToCart(id).subscribe({
       next: (response) => {
         this.toastr.success('Product added to cart');
@@ -73,10 +79,17 @@ export class ProductsComponent implements OnInit {
       },
       error: (error) => {
         this._Renderer2.removeAttribute(e, 'disabled');
+        this.toastr.error('Product addition failed');
       },
     });
   }
   pushWishlist(id: string, e: HTMLButtonElement) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.toastr.warning('Please login to add to wishlist');
+      return;
+    }
+
     this._Renderer2.setAttribute(e, 'disabled', 'true');
     this._WishlistService.addToWishlist(id).subscribe({
       next: (res) => {

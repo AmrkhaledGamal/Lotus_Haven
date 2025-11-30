@@ -9,7 +9,10 @@ export class CartService {
   constructor(private http: HttpClient) {}
 
   cartNumber: BehaviorSubject<number> = new BehaviorSubject(0);
-  headToken: any = { token: localStorage.getItem('token') };
+  
+  get headToken(): any {
+    return { token: localStorage.getItem('token') };
+  }
 
   addItemToCart(id: string): Observable<any> {
     return this.http.post(

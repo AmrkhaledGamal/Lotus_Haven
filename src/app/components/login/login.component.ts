@@ -25,19 +25,23 @@ export class LoginComponent {
   });
 
   submitLogin() {
+    this.masErr = ''; // Clear previous error messages
     this.regSpinner = true;
     if (this.loginForm.valid) {
       this._AuthService.apiLogin(this.loginForm.value).subscribe({
         next: (res) => {
           localStorage.setItem('token', res.token);
           this.regSpinner = false;
+          this.masErr = ''; // Clear error on success
           this._Router.navigate(['/home']);
         },
         error: (error) => {
           this.regSpinner = false;
-          this.masErr = error.error.message;
+          this.masErr = error.error?.message || 'An error occurred during login';
         },
       });
+    } else {
+      this.regSpinner = false;
     }
   }
 }

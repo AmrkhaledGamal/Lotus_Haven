@@ -8,7 +8,6 @@ import { authGuard } from './core/guard/auth.guard';
 export const routes: Routes = [
   {
     path: '',
-    canActivate: [authGuard],
     component: MainLayoutComponent,
     children: [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -45,14 +44,6 @@ export const routes: Routes = [
         title: 'Categories',
       },
       {
-        path: 'cart',
-        loadComponent: () =>
-          import('./components/cart/cart.component').then(
-            (c) => c.CartComponent
-          ),
-        title: 'Cart',
-      },
-      {
         path: 'brands',
         loadComponent: () =>
           import('./components/brands/brands.component').then(
@@ -61,7 +52,17 @@ export const routes: Routes = [
         title: 'Brand',
       },
       {
+        path: 'cart',
+        canActivate: [authGuard],
+        loadComponent: () =>
+          import('./components/cart/cart.component').then(
+            (c) => c.CartComponent
+          ),
+        title: 'Cart',
+      },
+      {
         path: 'wishlist',
+        canActivate: [authGuard],
         loadComponent: () =>
           import('./components/wishlist/wishlist.component').then(
             (c) => c.WishlistComponent
@@ -70,6 +71,7 @@ export const routes: Routes = [
       },
       {
         path: 'checkout/:id',
+        canActivate: [authGuard],
         loadComponent: () =>
           import('./components/checkout/checkout.component').then(
             (c) => c.CheckoutComponent
@@ -78,6 +80,7 @@ export const routes: Routes = [
       },
       {
         path: 'allorders',
+        canActivate: [authGuard],
         loadComponent: () =>
           import('./components/allorders/allorders.component').then(
             (c) => c.AllordersComponent

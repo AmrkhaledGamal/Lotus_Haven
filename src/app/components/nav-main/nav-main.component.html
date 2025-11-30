@@ -45,12 +45,12 @@
     <div
       class="d-flex flex-row align-items-center gap-3 mt-1 justify-content-around"
     >
-      <a class="cart-icon position-relative" routerLink="/cart">
+      <a class="cart-icon position-relative" routerLink="/cart" (click)="navigateToCart($event)">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-num position-absolute">{{ navNumberCart }} </span>
       </a>
 
-      <a role="button" class="position-relative" routerLink="/wishlist">
+      <a role="button" class="position-relative" routerLink="/wishlist" (click)="navigateToWishlist($event)">
         <i class="fa-solid fa-heart fav-icon"></i>
         <span class="fav-num position-absolute"> {{ navNumberWish }} </span>
       </a>
@@ -78,7 +78,12 @@
           </ul>
         </li>
       </div>
+      @if (isLoggedIn()) {
       <button (click)="signOut()" class="main-btn">sign out</button>
+      } @else {
+      <button routerLink="/login" class="main-btn">sign in</button>
+      <button routerLink="/register" class="main-btn">sign up</button>
+      }
     </div>
   </div>
 </nav>

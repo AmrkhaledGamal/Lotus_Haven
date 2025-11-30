@@ -55,18 +55,22 @@ export class RegisterComponent {
     }
   }
   submitRegister() {
+    this.masErr = ''; // Clear previous error messages
     this.regSpinner = true;
     if (this.registerForm.valid) {
       this._AuthService.apiRegister(this.registerForm.value).subscribe({
         next: (res) => {
           this.regSpinner = false;
+          this.masErr = ''; // Clear error on success
           this._Router.navigate(['/login']);
         },
         error: (error) => {
           this.regSpinner = false;
-          this.masErr = error.error.message;
+          this.masErr = error.error?.message || 'An error occurred during registration';
         },
       });
+    } else {
+      this.regSpinner = false;
     }
   }
 }

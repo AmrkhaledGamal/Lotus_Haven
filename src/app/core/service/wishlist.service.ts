@@ -9,7 +9,10 @@ export class WishlistService {
   constructor(private http: HttpClient) {}
 
   numWishlist: BehaviorSubject<number> = new BehaviorSubject(0);
-  headToken: any = { token: localStorage.getItem('token') };
+  
+  get headToken(): any {
+    return { token: localStorage.getItem('token') };
+  }
 
   addToWishlist(id: string): Observable<any> {
     return this.http.post(
