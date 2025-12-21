@@ -12,7 +12,7 @@ export class OrdersService {
 
   onlineOrders(id: string, userForm: object): Observable<any> {
     return this.http.post(
-      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://amrkhaledgamal.github.io/E-commerce-lotus-haven/`,
+      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://lotus-haven.netlify.app`,
       {
         shippingAddress: userForm,
       },
